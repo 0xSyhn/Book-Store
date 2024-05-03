@@ -2,6 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import {PORT,mongoDBURL} from "./config.js";
 import booksRoute from './routes/booksRoute.js'
+import cors from 'cors';
 
 const app = express();
 
@@ -9,12 +10,14 @@ const app = express();
 app.use(express.json());
 
 //MIDDLEWARE TO HANDLE CORS POLICY
-app.use(cors({
-    origin:'http://localhost:3000',
-    methods:['POST','PUT','GET','DELETE'],
-    allowedHeaders:['Content-Type'],
-})
-);
+app.use(cors());
+
+// app.use(cors({
+//     origin:'http://localhost:3000',
+//     methods:['POST','PUT','GET','DELETE'],
+//     allowedHeaders:['Content-Type'],
+// })
+// );
 
 app.get('/',(request, response)=>{
     console.log(request);
