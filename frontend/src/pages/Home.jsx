@@ -17,15 +17,19 @@ const Home = () => {
       .then((response)=>{
         console.log(response.data);
         setBooks(response.data);
-        console.log(books);
+        //console.log(books);
         setLoading(false);
-        setGive(true);
       })
       .catch((error)=>{
         console.log(error);
         setLoading(false);
       })
   }, []);
+  useEffect(() => {
+    console.log(books); 
+    setGive(true);
+
+  }, [books]);
   return (
     <div className='p-4'>
       <div className='flex justify-between items-center'>
@@ -48,7 +52,8 @@ const Home = () => {
             </tr>
           </thead>
           <tbody>
-            {books.length==0 ? books.map((book,index)=>{
+            {books.length!=0 ? books.map((book,index)=>{
+              return (
               <tr key={book._id} className='h-8'>
                 <td className='border border-slate-700 rounded-md text-center'>
                   {index+1}
@@ -76,6 +81,7 @@ const Home = () => {
                   </div>
                 </td>
               </tr>
+              )
             }
             ):<tr className='h-8'>
                 <td className='border border-slate-700 rounded-md text-center'>
