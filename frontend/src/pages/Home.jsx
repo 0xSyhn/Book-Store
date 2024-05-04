@@ -9,7 +9,6 @@ import {MdOutlineAddBox, MdOutlineDelete } from 'react-icons/md';
 const Home = () => {
   const[books,setBooks] = useState([]);
   const[loading,setLoading] = useState(false);
-  const[give, setGive]=useState(false);
   useEffect(()=>{
     setLoading(true);
     axios
@@ -25,11 +24,6 @@ const Home = () => {
         setLoading(false);
       })
   }, []);
-  useEffect(() => {
-    console.log(books); 
-    setGive(true);
-
-  }, [books]);
   return (
     <div className='p-4'>
       <div className='flex justify-between items-center'>
